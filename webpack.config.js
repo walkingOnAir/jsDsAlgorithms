@@ -1,8 +1,8 @@
-import webpack from "webpack";
+const webpack = require("webpack");
 //输出index.html插件
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 //每次构建前，清理输出目录插件
-import CleanWebpackPlugin from "clean-webpack-plugin";
+const CleanWebpackPlugin =require("clean-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -19,15 +19,15 @@ module.exports = {
     },
     output: {
         path: `${__dirname}/output/`,
-        filename: '[name].bundle.js'
+        filename: "[name].[hash].bundle.js"
     },
     module: {
         rules: [
-            // {
-            //     test: /\.js$|\.jsx$/,
-            //     use: ["eslint-loader"],
-            //     exclude: /^node_modules$/
-            // },
+            {
+                test: /\.js$|\.jsx$/,
+                use: ["eslint-loader"],
+                exclude: /^node_modules$/
+            },
             {
                 //一个正则表达式，将加载器和文件匹配
                 test: /\.js$|\.jsx$/,
@@ -39,6 +39,16 @@ module.exports = {
     },
     //插件配置
     plugins: [
+        //定义编译环境
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("development")
+            }
+        }),
+        //公共模块单独打包
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "common"
+        }),
         new CleanWebpackPlugin(["output"]),
         new HtmlWebpackPlugin({
             title: "Output Management"
