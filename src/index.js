@@ -5,6 +5,7 @@
  */
 import Stack from "./stack";
 import Queue from "./queue";
+import LinkedList from "./linkedList";
 
 //创建一个栈
 const stack = new Stack();
@@ -45,3 +46,20 @@ if (!queue.isEmpty()) {
     queue.clear();
     console.log(queue.size());
 }
+
+//创建一个链表
+const linkedList = new LinkedList();
+console.log("#############################链表############################");
+//增加元素
+linkedList.append(1);
+linkedList.append(2);
+console.log(linkedList.toString());
+//插入元素
+linkedList.insert(1, 3);
+console.log(linkedList.toString());
+//获取元素
+console.log(linkedList.indexOf(2));
+//删除元素
+linkedList.removeAt(2);
+console.log(linkedList.size());
+console.log(linkedList.toString());
