@@ -3,21 +3,21 @@
  * Created by wangpeng on 2017/7/27.
  */
 
-let head = null;
-let length = 0;
-
 class LinkedList {
-
+    
+    head = null;
+    length = 0;
+    
     //向链表中增加一个元素
     append(ele) {
         const node = new Node(ele);
         let currentNode;
         //链表为null，将head直接指向新元素
-        if (head === null) {
-            head = node;
+        if (this.head === null) {
+            this.head = node;
         } else {
             //链表不为空
-            currentNode = head;
+            currentNode = this.head;
             //遍历找到最后一个节点
             while (currentNode.next) {
                 currentNode = currentNode.next;
@@ -26,14 +26,14 @@ class LinkedList {
             currentNode.next = node;
         }
         //更新链表长度
-        length++;
+        this.length++;
     }
     
     //删除指定位置元素
     removeAt(pos) {
-        let currentNode = head,
+        let currentNode = this.head,
             preNode = null;
-        if (head === null) {
+        if (this.head === null) {
             return null;
         }
         if (pos < 0) {
@@ -43,7 +43,7 @@ class LinkedList {
             return null;
         }
         if (pos === 0) {
-            head = currentNode.next;
+            this.head = currentNode.next;
         } else {
             while (pos > 0) {
                 preNode = currentNode;
@@ -52,14 +52,14 @@ class LinkedList {
             }
             preNode.next = currentNode.next;
         }
-        length--;
+        this.length--;
         return currentNode.ele;
     }
     
     //从指定位置插入元素
     insert(pos, ele) {
         let node = new Node(ele),
-            currentNode = head,
+            currentNode = this.head,
             preNode;
         if (pos < 0) {
             return false;
@@ -69,7 +69,7 @@ class LinkedList {
         }
         if (pos === 0) {
             node.next = currentNode;
-            head = node;
+            this.head = node;
         } else {
             while (pos > 0) {
                 preNode = currentNode;
@@ -79,13 +79,13 @@ class LinkedList {
             preNode.next = node;
             node.next = currentNode;
         }
-        length++;
+        this.length++;
         return true;
     }
     
     //返回指定元素的位置
     indexOf(ele) {
-        let currentNode = head,
+        let currentNode = this.head,
             index = 0;
         while (currentNode) {
             if (ele === currentNode.ele) {
@@ -98,11 +98,11 @@ class LinkedList {
     }
     
     size() {
-        return length;
+        return this.length;
     }
     
     toString() {
-        let currentNode = head,
+        let currentNode = this.head,
             str = "";
         while (currentNode) {
             str += currentNode.ele + (currentNode.next ? "," : "");
