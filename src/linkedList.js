@@ -97,6 +97,11 @@ class LinkedList {
         return -1;
     }
     
+    //获取链表头
+    getHead() {
+        return this.head;
+    }
+    
     size() {
         return this.length;
     }
