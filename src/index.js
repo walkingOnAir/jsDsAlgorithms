@@ -7,6 +7,7 @@ import Stack from "./stack";
 import Queue from "./queue";
 import LinkedList from "./linkedList";
 import Set from "./set";
+import Map from "./map";
 
 //创建一个栈
 const stack = new Stack();
@@ -87,3 +88,16 @@ console.log(set.subset(otherSet));
 //删除元素
 otherSet.remove(3);
 console.log(otherSet.values());
+
+//创建一个字典类
+const map = new Map();
+console.log("#############################字典############################");
+//增加元素
+map.set("a", 1);
+map.set("b", 2);
+//获取元素
+console.log(map.get("a"));
+console.log(map.values());
+//删除元素
+map.remove("a");
+console.log(map.getItems());
