@@ -9,6 +9,7 @@ import LinkedList from "./linkedList";
 import Set from "./set";
 import Map from "./map";
 import HashTable from "./hashTable";
+import Tree from "./tree";
 
 //创建一个栈
 const stack = new Stack();
@@ -115,3 +116,22 @@ console.log(hashTable.get("a"));
 hashTable.remove("a");
 console.log(hashTable.get("a"));
 console.log(hashTable.get("b"));
+
+//创建一个二叉树
+const tree = new Tree();
+console.log("#############################二叉树############################");
+//增加元素
+tree.insert(1);
+tree.insert(2);
+tree.insert(3);
+tree.insert(4);
+tree.insert(5);
+//中序遍历
+console.log(tree.values("inOrderTraverse"));
+console.log(tree.values("inOrderTraverseUnRec"));
+//先序遍历
+console.log(tree.values("preOrderTraverse"));
+console.log(tree.values("preOrderTraverseUnRec"));
+//后序遍历
+console.log(tree.values("postOrderTracerse"));
+console.log(tree.values("postOrderTracerseUnRec"));
