@@ -39,7 +39,7 @@ class LinkedList {
         if (pos < 0) {
             return null;
         }
-        if (pos >= length) {
+        if (pos >= this.length) {
             return null;
         }
         if (pos === 0) {
@@ -64,7 +64,7 @@ class LinkedList {
         if (pos < 0) {
             return false;
         }
-        if (pos >= length) {
+        if (pos >= this.length) {
             return false;
         }
         if (pos === 0) {
@@ -104,6 +104,10 @@ class LinkedList {
     
     size() {
         return this.length;
+    }
+    
+    isEmpty() {
+        return this.length === 0;
     }
     
     toString() {

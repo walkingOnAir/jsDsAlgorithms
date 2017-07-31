@@ -8,6 +8,7 @@ import Queue from "./queue";
 import LinkedList from "./linkedList";
 import Set from "./set";
 import Map from "./map";
+import HashTable from "./hashTable";
 
 //创建一个栈
 const stack = new Stack();
@@ -101,3 +102,16 @@ console.log(map.values());
 //删除元素
 map.remove("a");
 console.log(map.getItems());
+
+//创建一个散列表
+const hashTable = new HashTable();
+console.log("#############################散列表############################");
+//增加元素
+hashTable.put("a", 1);
+hashTable.put("b", 2);
+//获取元素
+console.log(hashTable.get("a"));
+//删除元素
+hashTable.remove("a");
+console.log(hashTable.get("a"));
+console.log(hashTable.get("b"));

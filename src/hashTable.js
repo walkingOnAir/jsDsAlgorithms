@@ -40,17 +40,37 @@ class HashTable {
         let pos = loseHashCode(key);
         if (this._table[pos] !== undefined) {
             let currentNode = this._table[pos].getHead();
-            do {
+            if (currentNode.ele.key === key) {
+                return currentNode.ele.val;
+            }
+            while (currentNode.next) {
                 if (currentNode.ele.key === key) {
-                    return currentNode.ele.value;
+                    return currentNode.ele.val;
                 }
-            } while (currentNode.next);
+                currentNode = currentNode.next;
+            }
         }
         return undefined;
     }
     
     remove(key) {
-        this._table[loseHashCode(key)] = undefined;
+        let pos = loseHashCode(key);
+        if (this._table[pos] !== undefined) {
+            let currentNode = this._table[pos].getHead(),
+                i = 0;
+            do {
+                if (currentNode.ele.key === key) {
+                    this._table[pos].removeAt(i);
+                    if (this._table[pos].isEmpty()) {
+                        this._table[pos] = undefined;
+                    }
+                    return true;
+                }
+                currentNode = currentNode.next;
+                i++;
+            } while (currentNode.next);
+        }
+        return false;
     }
 }
 
