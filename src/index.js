@@ -11,6 +11,7 @@ import Map from "./map";
 import HashTable from "./hashTable";
 import Tree from "./tree";
 import Graph from "./graph";
+import Sort from "./sort";
 
 //创建一个栈
 const stack = new Stack();
@@ -175,3 +176,20 @@ graph.dfs("A", (item) => {
     "use strict";
     console.log(item);
 });
+
+console.log("#############################排序算法############################");
+let sort_arr = [2, 3, 4, 1, 6, 8, 3, 1, 5, 9, 1, 2];
+console.log("冒泡排序：从小到大");
+Sort.bubbleSort(sort_arr);
+console.log(sort_arr);
+console.log("冒泡排序：从大到小");
+Sort.bubbleSort(sort_arr, Sort.REVERSE);
+console.log(sort_arr);
+
+sort_arr = [2, 3, 4, 1, 6, 8, 3, 1, 5, 9, 1, 2];
+console.log("选择排序：从小到大");
+Sort.selectionSort(sort_arr);
+console.log(sort_arr);
+console.log("选择排序：从大到小");
+Sort.selectionSort(sort_arr, Sort.REVERSE);
+console.log(sort_arr);
