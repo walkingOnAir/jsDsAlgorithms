@@ -10,6 +10,7 @@ import Set from "./set";
 import Map from "./map";
 import HashTable from "./hashTable";
 import Tree from "./tree";
+import Graph from "./graph";
 
 //创建一个栈
 const stack = new Stack();
@@ -135,3 +136,42 @@ console.log(tree.values("preOrderTraverseUnRec"));
 //后序遍历
 console.log(tree.values("postOrderTracerse"));
 console.log(tree.values("postOrderTracerseUnRec"));
+
+//创建一个图
+const graph = new Graph();
+console.log("#############################图############################");
+//添加顶点
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
+graph.addVertex("G");
+graph.addVertex("H");
+graph.addVertex("I");
+//添加边
+graph.addEdge("A", "B");
+graph.addEdge("A", "C");
+graph.addEdge("A", "D");
+graph.addEdge("B", "E");
+graph.addEdge("B", "F");
+graph.addEdge("C", "D");
+graph.addEdge("C", "G");
+graph.addEdge("D", "G");
+graph.addEdge("D", "H");
+graph.addEdge("E", "I");
+//获取顶点和相邻顶点组成的字典
+console.log(graph.getAdjList());
+//广度优先遍历
+console.log("广度优先遍历");
+graph.bfs("A", (item) => {
+    "use strict";
+    console.log(item);
+});
+//深度优先遍历
+console.log("深度优先遍历");
+graph.dfs("A", (item) => {
+    "use strict";
+    console.log(item);
+});
