@@ -111,6 +111,42 @@ class Sort {
             }
         }
     }
+    
+    /**
+     * 归并排序 时间复杂度为O(nlogn) 性能更好
+     * @param array 需排序数组
+     * @param direction 从小到大或从大到小 默认从小到大
+     */
+    static mergeSort(array, direction = Sort.POSITIVE) {
+        
+        let mergeSortRec = (array, direction) => {
+            //合 从两个数组中依次取出第一个 始终将小的一个放入新数组中
+            let merge = (left, right) => {
+                let final = [];
+                while (left.length && right.length) {
+                    if (direction === Sort.POSITIVE) {
+                        final.push(left[0] <= right[0] ? left.shift() : right.shift());
+                    } else {
+                        final.push(left[0] >= right[0] ? left.shift() : right.shift());
+                    }
+                }
+                return final.concat(left.concat(right));
+            };
+            
+            let length = array.length;
+            if (length === 1) {
+                return array;
+            }
+            
+            //分
+            let mid = Math.floor(length / 2),
+                left = array.slice(0, mid),
+                right = array.slice(mid, length);
+            return merge(mergeSortRec(left, direction), mergeSortRec(right, direction));
+        };
+        
+        return mergeSortRec(array, direction);
+    }
 }
 
 export default Sort;
