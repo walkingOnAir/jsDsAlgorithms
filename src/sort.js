@@ -77,6 +77,40 @@ class Sort {
             }
         }
     }
+    
+    /**
+     * 插入排序 时间复杂度为O(n^2) 排序小型数组性能更好
+     * @param array 需排序数组
+     * @param direction 从小到大或从大到小 默认从小到大
+     */
+    static insertionSort(array, direction = Sort.POSITIVE) {
+        
+        if (array.length < 2) {
+            return;
+        }
+        
+        for (let i = 1, iLen = array.length; i < iLen; i++) {
+            //外层循环从第二个数开始
+            for (let j = i; j > 0; j--) {
+                //内层循环从外层循环当前位置往前
+                if (array[j] < array[j - 1]) {
+                    //从小到大
+                    if (direction === Sort.POSITIVE) {
+                        let temp = array[j - 1];
+                        array[j - 1] = array[j];
+                        array[j] = temp;
+                    }
+                } else {
+                    //从大到小
+                    if (direction === Sort.REVERSE) {
+                        let temp = array[j - 1];
+                        array[j - 1] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+        }
+    }
 }
 
 export default Sort;
