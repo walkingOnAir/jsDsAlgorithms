@@ -12,6 +12,7 @@ import HashTable from "./hashTable";
 import Tree from "./tree";
 import Graph from "./graph";
 import Sort from "./sort";
+import Search from "./search";
 
 //创建一个栈
 const stack = new Stack();
@@ -213,3 +214,8 @@ console.log("快速排序：从小到大");
 console.log(Sort.quickSort(sort_arr));
 console.log("快速排序：从大到小");
 console.log(Sort.quickSort(sort_arr, Sort.REVERSE));
+
+console.log("#############################搜索算法############################");
+sort_arr = [2, 3, 4, 1, 6, 8, 3, 1, 5, 9, 1, 2];
+console.log("二分搜索");
+console.log(Search.binarySearch(sort_arr, 1));
