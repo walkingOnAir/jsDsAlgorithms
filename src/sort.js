@@ -114,6 +114,7 @@ class Sort {
     
     /**
      * 归并排序 时间复杂度为O(nlogn) 性能更好
+     * 先分后合，分治法的应用
      * @param array 需排序数组
      * @param direction 从小到大或从大到小 默认从小到大
      */
@@ -146,6 +147,43 @@ class Sort {
         };
         
         return mergeSortRec(array, direction);
+    }
+    
+    /**
+     * 快速排序 平均状况下时间复杂度为O(nlogn)，最坏状况下时间复杂度为O(n^2)。通常比其他O(nlogn)算法更快。
+     * 1、找基准 2、找左右数组 3、将左右数组和基准合并 4、对左右子数组重复上述操作
+     * @param array 需排序数组
+     * @param direction 从小到大或从大到小 默认从小到大
+     */
+    static quickSort(array, direction = Sort.POSITIVE) {
+        //递归
+        let quickSortRec = (array, direction) => {
+            if (array.length <= 1) {
+                return array;
+            }
+            let pivot = array[0],
+                left = [],
+                right = [];
+            
+            for (let i = 1, len = array.length; i < len; i++) {
+                if (array[i] < pivot) {
+                    if (direction !== Sort.REVERSE) {
+                        left.push(array[i]);
+                    } else {
+                        right.push(array[i]);
+                    }
+                } else {
+                    if (direction !== Sort.REVERSE) {
+                        right.push(array[i]);
+                    } else {
+                        left.push(array[i]);
+                    }
+                }
+            }
+            return quickSortRec(left, direction).concat([pivot], quickSortRec(right, direction));
+        };
+        
+        return quickSortRec(array, direction);
     }
 }
 

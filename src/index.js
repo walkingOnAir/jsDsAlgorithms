@@ -207,3 +207,9 @@ console.log("归并排序：从小到大");
 console.log(Sort.mergeSort(sort_arr));
 console.log("归并排序：从大到小");
 console.log(Sort.mergeSort(sort_arr, Sort.REVERSE));
+
+sort_arr = [2, 3, 4, 1, 6, 8, 3, 1, 5, 9, 1, 2];
+console.log("快速排序：从小到大");
+console.log(Sort.quickSort(sort_arr));
+console.log("快速排序：从大到小");
+console.log(Sort.quickSort(sort_arr, Sort.REVERSE));
